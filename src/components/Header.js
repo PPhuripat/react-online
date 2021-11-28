@@ -1,4 +1,9 @@
 import React from 'react'
+import Button from '../styles/button/Button'
+import Title from '../styles/title/Title'
+import PropTypes from 'prop-types';
+
+
 
 const Header = () => {
     let companyName = "TNI"
@@ -8,50 +13,43 @@ const Header = () => {
         return companyName + ".com"
     }
 
-    const isLogin = true;
+    const isLogin = false;
 
     const showMe = () => {
         alert("Hello react")
     }
 
-    const product = [
+
+
+    const products = [
         {id: 1, name: "coke"},
         {id: 2, name: "Pepsi"}
     ]
 
+    const keyword  = 'correct'
+
     return (
         <div>
-            <h1>Hello {showMassage()}</h1>
-            <br />
-            {/* {
-                isLogin === true ? (
-                    <>
-                    <p>Welcome</p>
-                    <p>Student</p>
-                    </>
-                ) : (
-                    <>
-                        <p>Welcome</p>
-                        <p>Teacher</p>
-                    </>
-                )
-            }
-
-            {isLogin ? <Logo /> : <p>Unlock</p> } */}
-
+            <Title>Project React</Title>
+            <h1>Hello {showMessage()} </h1>
+        
+            
             <button onClick={showMe}>Click me</button>
-
+            <Button   onClick={showMe} keyword={keyword}>
+                Click me
+            </Button>
             <ul>
                 {
 
                     products.map((product,index) => {
-                        return (<li key={index}>{index+1}{product.name}</li>)
+                        return (<li key={product.id}>{product.name}</li>)
                     })
                 }
                 </ul>
-
+            <hr />
         </div>
     )
+
     
 }
 

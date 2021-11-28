@@ -6,11 +6,12 @@ import Logo from './components/Logo';
 
 function App() {
   return (
-    <>
+    <div className="logo">
     <Logo></Logo>
     <Header/>
-    <Footer/>
-    </>
+    <Footer title="TNI" website="www.google.com" 
+    address="Bangkok" postcode={10250} isOpen/>
+    </div>
   );
 }
 

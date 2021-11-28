@@ -3,19 +3,29 @@ import PropTypes from 'prop-types';
 const Footer = ({title,website,address,postcode, isOpen}) => {
     //const nickName = "Copter"
     //const {title,website,address,postcode} = props;
+
     return (
         <div>
-           <h3>{title} &copy; {new Date().getFullYear()}</h3>
-           <p>{website} {address} {postcode} {isOpen.toString}</p>
+           <h1 style={styles.title}>{title} &copy; {new Date().getFullYear()}</h1>
+           <p style={{color:'white' , fontSize: 18}}>{website} {address} 
+           {postcode} {isOpen.toString}</p>
+            <p style={styles.title}>Phuripat</p>
         </div>
     )
 }
+    const styles = {
+        title : {
+
+            color: 'Blue'
+        }
+    }
+
 Footer.propTypes = {
     title: PropTypes.string,
     website: PropTypes.string,
     address: PropTypes.string,
     postcode: PropTypes.number,
-    status: PropTypes.bool
-}
+    isOpen: PropTypes.bool
+  };
 
 export default Footer
