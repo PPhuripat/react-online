@@ -1,5 +1,5 @@
 import React from "react";
-import { BsFillArrowDownCircleFill } from "react-icons/bs";
+import { DiYeoman } from "react-icons/di";
 
 const HomePage = () => {
   return (
@@ -8,7 +8,7 @@ const HomePage = () => {
         {/* Main jumbotron for a primary marketing message or call to action */}
         <div className="jumbotron">
           <div className="container">
-            <h1 className="display-3">Hello, world! <BsFillArrowDownCircleFill color="red"></BsFillArrowDownCircleFill></h1>
+            <h1 className="display-3">Hello, world!  <DiYeoman color="green"></DiYeoman></h1>
             <p>
               This is a template for a simple marketing or informational
               website. It includes a large callout called a jumbotron and three
