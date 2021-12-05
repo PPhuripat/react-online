@@ -1,5 +1,5 @@
 import React from "react";
-function UseHoverLogo(){
+function useHoverLogo(){
     const [hover,setHover] = React.useState()
 
     const mouseOver = () =>{
@@ -11,4 +11,4 @@ function UseHoverLogo(){
     }
     return [hover,mouseOver,mouseOut]
 }
-export default UseHoverLogo 
+export default useHoverLogo 
