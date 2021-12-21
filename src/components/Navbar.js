@@ -13,6 +13,8 @@ const Navber = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
             <NavLink exact to="/" className="nav-link" activeClassName="active">Home</NavLink>
+            <NavLink  exact to="/Product" className="nav-link" activeClassName="active">Product</NavLink>
+            <NavLink exact to="/Contact" className="nav-link" activeClassName="active">Contact</NavLink>
       <NavLink exact to="/about" className="nav-link" activeClassName="active">About</NavLink>
               <Nav.Link href="#link">Link</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
