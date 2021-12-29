@@ -1,11 +1,13 @@
 import React from "react";
 import {Navbar,Container,Nav,NavDropdown,Form,FormControl,Button} from "react-bootstrap";
 import { NavLink } from "react-router-dom"
-
+import { useHistory } from "react-router-dom";
 const Navber = () => {
+  const history = useHistory()
   return (
     <div>
       <Navbar bg="light" expand="lg">
+
         <Container>
         {/*<Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>*/}
   <NavLink to='/' exact className="navbar-brand">React-Bootstrap</NavLink>
@@ -17,17 +19,16 @@ const Navber = () => {
             <NavLink exact to="/Contact" className="nav-link" activeClassName="active">Contact</NavLink>
       <NavLink exact to="/about" className="nav-link" activeClassName="active">About</NavLink>
               <Nav.Link href="#link">Link</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
+              <NavDropdown title="Workshop Pagination" id="basic-nav-dropdown">
+                <NavDropdown.Item onClick={() =>{
+                  history.replace("/hospitalPage")
+                }}>Hospital List</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
+                <NavDropdown.Item onClick={() =>{
+                  history.replace("/category")
+                }}>
+                  News Category
+              
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>

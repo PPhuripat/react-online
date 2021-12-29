@@ -7,7 +7,7 @@ import AboutPage from "./components/pages/AboutPage";
 import ProductPage from "./components/pages/ProductPage";
 import DetailPage from "./components/pages/DetailPage";
 import ContactUs from "./components/pages/ContactUs";
-
+import HospitalPage from "./components/pages/hospital/HospitalPage";
 function App() {
   return (
 
@@ -24,6 +24,7 @@ function App() {
       <Route path='/Product'><ProductPage/></Route>
        <Route path='/Contact'><ContactUs></ContactUs></Route>
        <Route path="/detail/:id/title/:title"><DetailPage/></Route>
+       <Route path='/hospitalPage'><HospitalPage/></Route>
        
     </Switch>
     <Footer />
