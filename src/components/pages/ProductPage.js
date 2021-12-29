@@ -1,55 +1,42 @@
 import React from "react";
-import { Table,Image,Badge,Spinner,Button } from "react-bootstrap";
+import { Table, Image, Badge, Spinner, Button} from "react-bootstrap";
 import axios from "axios";
-import { BsFillLightningFill } from "react-icons/bs";
-
-function ProductPage() {
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+const ProductPage = () => {
   const [product, setProduct] = React.useState([]);
-  const [loading, setloading] = React.useState(false);
-  const [error, seterror] = React.useState(null);
-
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState(null);
   const getData = async () => {
-    try 
-    {
-        setloading(true)
-        const resp = await axios.get(
-            "https://api.codingthailand.com/api/course"
-          );
-          //console.log(resp.data)
-          setProduct(resp.data.data)
-    } 
-    catch (error) 
-    {
-        seterror(error)
-    } 
-    finally 
-    {
-        setloading(false)
+    try {
+      setLoading(true); // เริ่มหมุนติ้วๆตรงนี้
+      const resp = await axios.get("https://api.codingthailand.com/api/course");
+      // console.log(resp.data)
+      setProduct(resp.data.data);
+    } catch (error) {
+      // console.log(error.response)
+      setError(error);
+    } finally {
+      setLoading(false); // หยุดตรงนี้ทุกกรณีที่ทำเสร็จว่าว่าจะ try หรือ catch ก็ตาม
     }
-    //setProduct(resp.data);
   };
-
   React.useEffect(() => {
     getData();
   }, []);
-
-  if (loading === true){
-      return(
-          <div className="text-center mt-5">
-        <Spinner animation="border" variant="danger" />
-        </div>
-      )
+  if (loading === true) {
+    return (
+      <div className="text-center mt-5">
+        <Spinner animation="border" variant="primary" />
+      </div>
+    );
   }
-
-  if (error){
-      return(
-          <div className="text-center mt-5 text-danger">
-              <h4>Error from API, Plese try again</h4>
-              <p>{error.response.data.message}</p>
-          </div>
-      )
+  if (error) {
+    return (
+      <div className="text-center mt-5 text-danger">
+        <h4>Error from API, plese try again</h4>
+        <p>{error.response.data.message}</p>
+      </div>
+    );
   }
-
   return (
     <div className="container">
       <div className="row">
@@ -61,36 +48,41 @@ function ProductPage() {
                 <th>ID</th>
                 <th>Title</th>
                 <th>Detail</th>
-                <th>Create Date</th>
+                <th>Created Date</th>
                 <th>View</th>
                 <th>Picture</th>
                 <th>Detail</th>
               </tr>
             </thead>
             <tbody>
-            {
-
-                product.map((p, index) => {
-                    return (
-                        <tr key={p.id}>
-                            <td>{p.id}</td>
-                            <td>{p.title}</td>
-                            <td>{p.detail}</td>
-                            <td>{p.date}</td>
-                            <td><Badge variant="primary">{p.view}</Badge></td>
-                            <td><Image src={p.picture} rounded width={60}/></td>
-                            <td><Button href="/detail" variant="dark">Click ME <BsFillLightningFill/> </Button></td>
-                        </tr>
-                    )
-
-                })
-            }
+              {product.map((p, index) => {
+                return (
+                  <tr key={p.id}>
+                    <td>{p.id}</td>
+                    <td>{p.title}</td>
+                    <td>{p.detail}</td>
+                    <td>{p.date}</td>
+                    <td>
+                      <Badge variant="success">{p.view}</Badge>
+                    </td>
+                    {/* <td>{p.picture}</td> */}
+                    <td>
+                      <Image src={p.picture} rounded width={60} />
+                    </td>
+                    <td>
+                      
+                      <Link to={`/detail/${p.id}/title/${p.title}`}>
+                        <Button variant="primary">Click</Button>
+                      </Link>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </Table>
         </div>
       </div>
     </div>
   );
-}
-
+};
 export default ProductPage;
