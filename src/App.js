@@ -9,6 +9,9 @@ import DetailPage from "./components/pages/DetailPage";
 import ContactUs from "./components/pages/ContactUs";
 import HospitalPage from "./components/pages/hospital/HospitalPage";
 import IndexPage from "./components/pages/category/IndexPage";
+import CreatePage from "./components/pages/category/CreatePage";
+import EditPage from "./components/pages/category/EditPage";
+
 function App() {
   return (
 
@@ -16,18 +19,34 @@ function App() {
     <Navber />
    
     <Switch>
-      <Route path="/" exact>
-      <HomePage></HomePage>
-      </Route>
-      <Route path="/about">
-      <AboutPage></AboutPage>
-      </Route>
-      <Route path='/Product'><ProductPage/></Route>
-       <Route path='/Contact'><ContactUs></ContactUs></Route>
-       <Route path="/detail/:id/title/:title"><DetailPage/></Route>
-       <Route path='/hospitalPage'><HospitalPage/></Route>
-       <Route path="/category">
-            <IndexPage />
+    <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route path="/about">
+            <AboutPage />
+          </Route>
+          <Route path="/detail/:id/title/:title">
+            <DetailPage />
+          </Route>
+          <Route path="/product">
+            <ProductPage />
+          </Route>
+          <Route path="/contact">
+            <ContactUs />
+          </Route>
+          <Route path="/hospitalPage">
+            <HospitalPage />
+          </Route>
+          {/* <Route path='/category'><IndexPage/></Route> */}
+          <Route path="/category"
+            render={({ match: { url } }) => (
+              <>
+              <Route path={`${url}/`} exact><IndexPage /></Route>
+              <Route path={`${url}/create`}><CreatePage/></Route>
+              <Route path={`${url}/edit/:id`}><EditPage/></Route>
+              </>
+
+            )}>
           </Route>
     </Switch>
     <Footer />
