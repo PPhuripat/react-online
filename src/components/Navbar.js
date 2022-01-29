@@ -3,6 +3,19 @@ import { Navbar , Nav , NavDropdown , Form , FormControl , Button } from 'react-
 import { NavLink , useHistory } from "react-router-dom";
 const NavBar = () => {
   const history = useHistory();
+  const [profile,setProfile] = React.useState(null)
+
+  const getProfile = () =>{
+    //localStorage.getItem('profile')
+    const profileValue = JSON.parse(localStorage.getItem('profile'))
+    if(profileValue){
+        setProfile(profileValue)
+    }
+  }
+  React.useEffect(()=> {
+    getProfile()
+  },[])
+ 
   return (
     <>
         <Navbar bg="light" expand="lg">
@@ -24,10 +37,21 @@ const NavBar = () => {
                 </NavDropdown>
                 <NavLink className="nav-link" activeClassName="active" to="/upload">Upload</NavLink>
             </Nav>
-              <Nav>
+
+           {
+             profile ? (
+                <span className = "nav-text">Welcome {profile.name} 
+                <button className="btn btn-danger ml-2">Logout</button></span>
+             ) : (
+               <>
+                  <Nav>
               <NavLink className="nav-link" activeClassName="active" to="/register">Register</NavLink>
               <NavLink className="nav-link" activeClassName="active" to="/login">Login</NavLink>
               </Nav>
+
+               </>
+             )
+           }
             </Navbar.Collapse>
         </Navbar>
     </>
