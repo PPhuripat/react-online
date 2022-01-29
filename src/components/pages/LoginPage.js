@@ -46,7 +46,7 @@ const LoginPage = () => {
             history.replace('/')
             history.go(0);
         }catch(error){
-            addToast(error.response.data.errors.message[0],{
+            addToast(error.response.data.message,{
                 appearance:"error",
                 autoDismiss:true,
             });

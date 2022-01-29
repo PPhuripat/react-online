@@ -15,6 +15,8 @@ import HospitalPage from './components/pages/hospital/HospitalPage';
 import ProductPage from './components/pages/ProductPage';
 import RegisterPage from './components/pages/RegisterPage';
 import LoginPage from './components/pages/LoginPage';
+import MemberPage from './components/pages/MemberPage';
+import PrivateRoute from './guard/auth';
 function App() {
   return (
     
@@ -59,6 +61,9 @@ function App() {
             <Route path="/login">
               <LoginPage />
             </Route>
+            <PrivateRoute path="/member">
+              <MemberPage />
+            </PrivateRoute>
           </Switch>
 
         <Footer/>
