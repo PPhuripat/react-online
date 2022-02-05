@@ -1,19 +1,42 @@
 import React from "react";
 import { DiYeoman } from "react-icons/di";
-
+import { UserStoreContext } from "../../context/UserContext";
 const HomePage = () => {
+  const userStore = React.useContext(UserStoreContext)
+  const getProfile = () =>{
+    const profileValue = JSON.parse(localStorage.getItem('profile'))
+    if(profileValue)
+    {
+      userStore.updateProfile(profileValue)
+    }
+  }
+  React.useEffect(()=>{
+    getProfile()
+  },[])
   return (
     <div>
       <main role="main">
         {/* Main jumbotron for a primary marketing message or call to action */}
         <div className="jumbotron">
           <div className="container">
-            <h1 className="display-3">Hello, world!  <DiYeoman color="green"></DiYeoman></h1>
+          <h1 className="display-3">Hello, world!   {
+              userStore.profile ?(
+              <span className="nav-text">{userStore.profile.name} 
+              </span>
+            ):(
+              <>
+
+              </>
+            )
+
+          }
+    <DiYeoman color="green"></DiYeoman></h1>
             <p>
               This is a template for a simple marketing or informational
               website. It includes a large callout called a jumbotron and three
               supporting pieces of content. Use it as a starting point to create
               something more unique.
+              
             </p>
             <p>
               <a className="btn btn-primary btn-lg" href="#" role="button">
