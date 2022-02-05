@@ -2,10 +2,11 @@ import React from "react";
 import { Navbar , Nav , NavDropdown , Form , FormControl , Button } from 'react-bootstrap';
 import { NavLink , useHistory } from "react-router-dom";
 import { UserStoreContext}from "../context/UserContext";
-
+import {useSelector} from 'react-redux'
 const NavBar = () => {
   const history = useHistory();
   const userStore = React.useContext(UserStoreContext)
+  const profileRedux = useSelector((state) => state.authReducer.profile )
   /*const [profile,setProfile] = React.useState(null)
   const userStore = React.useContext(UserStoreContext)*/
   const getProfile = () =>{
@@ -48,7 +49,7 @@ const NavBar = () => {
                 <NavDropdown.Item onClick={()=>{ history.replace("/category") }}>News Category</NavDropdown.Item>
                 </NavDropdown>
                 <NavLink className="nav-link" activeClassName="active" to="/upload">Upload</NavLink>
-                <NavLink className="nav-link" activeClassName="active" to="/member">Member</NavLink>
+                <NavLink className="nav-link" activeClassName="active" to="/member">Member {profileRedux.name}</NavLink>
             </Nav>
 
            {
