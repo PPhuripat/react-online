@@ -4,7 +4,8 @@ import { NavLink , useHistory } from "react-router-dom";
 import { UserStoreContext}from "../context/UserContext";
 import {useSelector} from 'react-redux'
 import {useDispatch} from 'react-redux'
-import { updateProfile } from "../../redux/actions/authAction";
+import { updateProfile } from "../redux/actions/authAction";
+
 const NavBar = () => {
   const history = useHistory();
   //const userStore = React.useContext(UserStoreContext)

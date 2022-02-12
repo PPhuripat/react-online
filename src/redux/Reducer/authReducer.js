@@ -1,4 +1,4 @@
-import { GET_PROFILE } from "./actions/authAction";
+import { GET_PROFILE } from "../actions/authAction";
 const initState = {
   profile: null,
 };
