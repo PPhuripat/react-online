@@ -6,10 +6,12 @@ import {useSelector} from 'react-redux'
 import {useDispatch} from 'react-redux'
 import { updateProfile } from "../redux/actions/authAction";
 
+
 const NavBar = () => {
   const history = useHistory();
   //const userStore = React.useContext(UserStoreContext)
   const profileRedux = useSelector((state) => state.authReducer.profile )
+  const total = useSelector((state) => state.cartReducer.total )
   const dispatch = useDispatch()
   /*const [profile,setProfile] = React.useState(null)
   const userStore = React.useContext(UserStoreContext)*/
@@ -46,6 +48,7 @@ const NavBar = () => {
                 <NavLink className="nav-link" activeClassName="active" to="/product">Product</NavLink>
                 <NavLink className="nav-link" activeClassName="active" to="/contact">Contact Us</NavLink>
                 <NavLink className="nav-link" activeClassName="active" to="/about">About</NavLink>
+                <NavLink className="nav-link" activeClassName="active" to="/cart">Cartpage {total} item(s)</NavLink>
                 {/* <Nav.Link href="#home">Home</Nav.Link> */}
                 <Nav.Link href="#link">Link</Nav.Link>
                 <NavDropdown title="Workshop Pagination" id="basic-nav-dropdown">

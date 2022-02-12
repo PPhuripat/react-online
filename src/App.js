@@ -18,6 +18,7 @@ import LoginPage from './components/pages/LoginPage';
 import MemberPage from './components/pages/MemberPage';
 import PrivateRoute from './guard/auth';
 import UserStoreProvider from "./context/UserContext";
+import Cart from './components/pages/Cart';
 //redux setup
 // redux setup
 import { Provider } from 'react-redux'
@@ -70,6 +71,9 @@ function App() {
             <PrivateRoute path="/member">
               <MemberPage />
             </PrivateRoute>
+            <Route path ="/Cart">
+              <Cart />
+            </Route>
  
             {/* makesense */}
             <Route
